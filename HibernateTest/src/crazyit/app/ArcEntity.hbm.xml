@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="crazyit.app.ArcEntity" table="ARC" schema="TRULYMESTST">
+        <composite-id mapped="true" class="crazyit.app.ArcEntityPK">
+            <key-property name="fromnodeid">
+                <column name="FROMNODEID" sql-type="varchar2(40)" length="40"/>
+            </key-property>
+            <key-property name="tonodeid">
+                <column name="TONODEID" sql-type="varchar2(40)" length="40"/>
+            </key-property>
+        </composite-id>
+        <property name="arctype">
+            <column name="ARCTYPE" sql-type="varchar2(40)" length="40" not-null="true"/>
+        </property>
+        <property name="arcattribute">
+            <column name="ARCATTRIBUTE" sql-type="varchar2(250)" length="250" not-null="true"/>
+        </property>
+        <property name="factoryname">
+            <column name="FACTORYNAME" sql-type="varchar2(40)" length="40" not-null="true"/>
+        </property>
+        <property name="processflowname">
+            <column name="PROCESSFLOWNAME" sql-type="varchar2(40)" length="40" not-null="true"/>
+        </property>
+        <property name="processflowversion">
+            <column name="PROCESSFLOWVERSION" sql-type="varchar2(40)" length="40" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

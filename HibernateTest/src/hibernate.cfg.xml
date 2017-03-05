@@ -4,11 +4,31 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url"/>
-        <property name="connection.driver_class"/>
-        <property name="connection.username"/>
-        <property name="connection.password"/>
-        <!-- DB schema will be updated if needed -->
-        <!-- <property name="hbm2ddl.auto">update</property> -->
+        <property name="connection.url">jdbc:oracle:thin:@//10.16.111.245:1521/testdb1</property>
+        <property name="connection.driver_class">oracle.jdbc.OracleDriver</property>
+
+        <!--指定连接池的最大和最小连接数-->
+        <property name="hibernate.c3p0.max_size">30</property>
+        <property name="hibernate.c3p0.min_size">1</property>
+
+        <!--指定连接池里连接的超时时长-->
+        <property name="hibernate.c3p0.timeout">5000</property>
+
+        <!--指定连接池里最大缓存多少个Statement对象-->
+        <property name="hibernate.c3p0.max_statements">100</property>
+
+        <property name="hibernate.c3p0.idle_test_period">3000</property>
+        <property name="hibernate.c3p0.acquire_increment">2</property>
+
+        <!--根据需要自动创建数据表-->
+        <property name="hbm2ddl.auto">update</property>
+
+        <!--指定数据库方言-->
+        <property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+
+        <!--罗列所有的映射文件-->
+        <mapping resource="crazyit/app/domain/News.hbm.xml"/>
+        <mapping class="crazyit.app.ArcEntity"/>
+        <mapping resource="crazyit/app/ArcEntity.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
